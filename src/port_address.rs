@@ -50,6 +50,12 @@ impl TryFrom<i32> for PortAddress {
     }
 }
 
+impl From<PortAddress> for u16 {
+    fn from(value: PortAddress) -> u16 {
+        value.0
+    }
+}
+
 impl<T> Convertable<T> for PortAddress {
     fn from_cursor(cursor: &mut Cursor<&[u8]>) -> Result<Self> {
         let number = cursor
